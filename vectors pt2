@@ -1,0 +1,73 @@
+//tj wangchuk
+//01/29/25
+//vectors part 2
+//extra is asci art
+
+#include <iostream>
+#include <vector>
+
+using namespace std;
+//extra
+cout << ".__           .__  .__                          .__                                " << endl;
+    cout << "|  |__   ____ |  | |  |   ____   __  _  __ ____ |  |   ____  ____   _____   ____   " << endl;
+    cout << "|  |  \\_/ __ \\|  | |  |  /  _ \\  \\ \\/ \\/ // __ \\|  | _/ ___\\/  _ \\ /     \\_/ __ \\  " << endl;
+    cout << "|   Y  \\  ___/|  |_|  |_(  <_> )  \\     /\\  ___/|  |_\\  \\__(  <_> )  Y Y  \\  ___/  " << endl;
+    cout << "|___|  /\\___  >____/____/\\____/    \\/\\_/  \\___  >____/\\___  >____/|__|_|  /\\___  > " << endl;
+    cout << "     \\/     \\/                                \\/          \\/            \\/     \\/   " << endl;
+//creates variabes
+int main() {
+    vector<int> strokes;
+    int numHoles = 9;
+    int input, position;
+    cout << "Enter your score for each hole:\n";
+    //for loop asking user
+    for (int i = 1; i <= numHoles; ++i) {
+        cout << "Hole " << i << ": ";
+        cin >> input;
+        
+        strokes.push_back(input);
+    }
+    cout << "\nYour initial scores: ";
+    for (auto it = strokes.begin(); it != strokes.end(); ++it)
+        cout << *it << " ";
+    cout << endl;
+    cout << "\nEnter the hole number (1-" << strokes.size() << ") where you want to insert a new score: ";
+    cin >> position;
+    
+//ai
+    if (position < 1 || position > strokes.size() + 1) {
+        cout << "Invalid position. Exiting program.\n";
+        return 1;
+    }
+
+    cout << "Enter the score to insert: ";
+    cin >> input;
+ //inserted
+
+    strokes.insert(strokes.begin() + (position - 1), input);
+
+
+    cout << "\nafter inserting: ";
+    for (auto it = strokes.begin(); it != strokes.end(); ++it)
+        cout << *it << " ";
+    cout << endl;
+    
+    cout << "\nEnter the hole number (1-9)" << " to remove a score: ";
+    cin >> position;
+//ai
+    if (position < 1 || position > strokes.size()) {
+        cout << "Invalid position. Exiting program.\n";
+        return 1;
+    }
+
+
+    strokes.erase(strokes.begin() + (position - 1));
+
+//remove
+    cout << "\n after removed: ";
+    for (auto it = strokes.begin(); it != strokes.end(); ++it)
+        cout << *it << " ";
+    cout << endl;
+
+    return 0;
+}
